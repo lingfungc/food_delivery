@@ -43,5 +43,6 @@ class MealRepository
       @meals.each do |meal|
         csv << [meal.id, meal.name, meal.price]
       end
+    end
   end
 end
