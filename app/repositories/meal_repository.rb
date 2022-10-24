@@ -28,6 +28,7 @@ class MealRepository
     meal.name = name
     meal.price = price
     save_csv
+    load_csv
   end
 
   def delete(id)

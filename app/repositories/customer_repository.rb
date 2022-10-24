@@ -28,6 +28,7 @@ class CustomerRepository
     customer.name = name
     customer.address = address
     save_csv
+    load_csv
   end
 
   def delete(id)
@@ -39,6 +40,7 @@ class CustomerRepository
   private
 
   def load_csv
+    @customers = []
     CSV.foreach(@csv_file, headers: :first_row, header_converters: :symbol) do |row|
       row[:id] = row[:id].to_i
       @customers << Customer.new(row)
@@ -49,8 +51,8 @@ class CustomerRepository
   def save_csv
     CSV.open(@csv_file, 'wb') do |csv|
       csv << %w[id name address]
-      @customers.each do |customer|
-        csv << [customer.id, customer.name, customer.address]
+      @customers.each_with_index do |customer, index|
+        csv << [index + 1, customer.name, customer.address]
       end
     end
   end
