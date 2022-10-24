@@ -15,6 +15,10 @@ class MealsController
     display_meals
   end
 
+  def list
+    display_meals
+  end
+
   def edit
     display_meals
     index = @meals_view.ask_user_for(:id).to_i - 1
@@ -29,10 +33,6 @@ class MealsController
     display_meals
     index = @meals_view.ask_user_for(:id).to_i - 1
     @meal_repository.delete(index)
-    display_meals
-  end
-
-  def list
     display_meals
   end
 

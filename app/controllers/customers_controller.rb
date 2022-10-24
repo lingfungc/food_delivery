@@ -19,6 +19,23 @@ class CustomersController
     display_customers
   end
 
+  def edit
+    display_customers
+    index = @customers_view.ask_user_for(:id).to_i - 1
+    name = @customers_view.ask_user_for(:name)
+    address = @customers_view.ask_user_for(:address)
+    customer = @customer_repository.find(index)
+    @customer_repository.update(customer, name, address)
+    display_customers
+  end
+
+  def destory
+    display_customers
+    index = @customers_view.ask_user_for(:id).to_i - 1
+    @customer_repository.delete(index)
+    display_customers
+  end
+
   private
 
   def display_customers

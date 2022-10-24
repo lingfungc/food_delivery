@@ -21,7 +21,19 @@ class CustomerRepository
   end
 
   def find(id)
-    @customers.find { |customer| customer.id == id }
+    @customers.find { |customer| customer.id == id + 1 }
+  end
+
+  def update(customer, name, address)
+    customer.name = name
+    customer.address = address
+    save_csv
+  end
+
+  def delete(id)
+    @customers.delete_at(id)
+    save_csv
+    load_csv
   end
 
   private
