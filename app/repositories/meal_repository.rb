@@ -1,5 +1,5 @@
 require 'csv'
-require_relative '../models/meal.rb'
+require_relative '../models/meal'
 
 class MealRepository
   # attr_accessor :meals, :next_id
