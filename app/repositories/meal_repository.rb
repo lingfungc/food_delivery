@@ -21,12 +21,25 @@ class MealRepository
   end
 
   def find(id)
-    @meals.find { |meal| meal.id == id }
+    @meals.find { |meal| meal.id == id + 1 }
+  end
+
+  def update(meal, name, price)
+    meal.name = name
+    meal.price = price
+    save_csv
+  end
+
+  def delete(id)
+    @meals.delete_at(id)
+    save_csv
+    load_csv
   end
 
   private
 
   def load_csv
+    @meals = []
     CSV.foreach(@csv_file, headers: :first_row, header_converters: :symbol) do |row|
       row[:id] = row[:id].to_i
       row[:price] = row[:price].to_i
@@ -38,8 +51,8 @@ class MealRepository
   def save_csv
     CSV.open(@csv_file, 'wb') do |csv|
       csv << %w[id name price]
-      @meals.each do |meal|
-        csv << [meal.id, meal.name, meal.price]
+      @meals.each_with_index do |meal, index|
+        csv << [index + 1, meal.name, meal.price]
       end
     end
   end
