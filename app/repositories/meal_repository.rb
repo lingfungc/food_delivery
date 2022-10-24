@@ -2,18 +2,16 @@ require 'csv'
 require_relative '../models/meal'
 
 class MealRepository
-  # attr_accessor :meals, :next_id
-
   def initialize(csv_file)
     @csv_file = csv_file
     @meals = []
     @next_id = 1
-    load_csv if File.exist?(csv_file)
+    load_csv if File.exist?(@csv_file)
   end
 
   def create(meal)
     meal.id = @next_id
-    meals << meal
+    @meals << meal
     @next_id += 1
     save_csv
   end
@@ -29,7 +27,7 @@ class MealRepository
   private
 
   def load_csv
-    CSV.foreach(@csv_file, headers: first_row, header_converters: :symbol) do |row|
+    CSV.foreach(@csv_file, headers: :first_row, header_converters: :symbol) do |row|
       row[:id] = row[:id].to_i
       row[:price] = row[:price].to_i
       @meals << Meal.new(row)
@@ -38,8 +36,8 @@ class MealRepository
   end
 
   def save_csv
-    CSV.open(@csv_file, "wb") do |csv|
-      csv << %[id name price]
+    CSV.open(@csv_file, 'wb') do |csv|
+      csv << %w[id name price]
       @meals.each do |meal|
         csv << [meal.id, meal.name, meal.price]
       end
