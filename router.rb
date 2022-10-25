@@ -10,7 +10,7 @@ class Router
     while @running
       @current_user = @sessions_controller.login
       # Avoid infinite loop of @sessions_controller.login
-      while @current_user && @running
+      while @current_user
       # check user is a manager or a driver
         if @current_user.manager?
           manager_menu
@@ -45,7 +45,7 @@ class Router
     puts '10. List all orders'
     puts '11. Edit a order'
     puts '12. Delete a order'
-    puts '99. Logout'
+    puts '88. Logout'
     puts '0. Exit'
     print '> '
   end
@@ -64,7 +64,7 @@ class Router
     when 10 then @orders_controller.list_all_undelivered
     when 11 then @orders_controller.edit
     when 12 then @orders_controller.destory
-    when 99 then logout!
+    when 88 then logout!
     when 0 then stop!
     else puts 'Try again...'
     end
@@ -76,7 +76,7 @@ class Router
     puts '---------------------------'
     puts '1. Mark one of my orders as delivered'
     puts '2. List all my orders'
-    puts '99. Logout'
+    puts '88. Logout'
     puts '0. Exit'
     print '> '
   end
@@ -85,7 +85,7 @@ class Router
     case choice
     when 1 then @orders_controller.mark_delivered
     when 2 then @orders_controller.list_undelivered
-    when 99 then logout!
+    when 88 then logout!
     when 0 then stop!
     else puts 'Try again...'
     end
@@ -96,6 +96,7 @@ class Router
   end
 
   def stop!
+    logout!
     @running = false
   end
 end
