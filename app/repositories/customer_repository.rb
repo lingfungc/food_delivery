@@ -20,8 +20,8 @@ class CustomerRepository
     @customers
   end
 
-  def find(id)
-    @customers.find { |customer| customer.id == id }
+  def find(index)
+    @customers.find { |customer| customer.id == index }
   end
 
   def update(customer, name, address)
@@ -31,8 +31,8 @@ class CustomerRepository
     load_csv
   end
 
-  def delete(id)
-    @customers.delete_at(id)
+  def delete(index)
+    @customers.delete_at(index - 1)
     save_csv
     load_csv
   end

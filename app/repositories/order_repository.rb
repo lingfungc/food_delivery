@@ -23,8 +23,8 @@ class OrderRepository
     @orders
   end
 
-  def find(id)
-    @orders.find { |order| order.id == id }
+  def find(index)
+    @orders.find { |order| order.id == index }
   end
 
   def update(order, meal, customer, employee)
@@ -35,8 +35,8 @@ class OrderRepository
     load_csv
   end
 
-  def delete(id)
-    @orders.delete_at(id)
+  def delete(index)
+    @orders.delete_at(index - 1)
     save_csv
     load_csv
   end

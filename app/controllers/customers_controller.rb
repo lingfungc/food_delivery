@@ -21,18 +21,18 @@ class CustomersController
 
   def edit
     display_customers
-    id = @customers_view.ask_user_for(:id).to_i
+    index = @customers_view.ask_user_for(:index).to_i
     name = @customers_view.ask_user_for(:name)
     address = @customers_view.ask_user_for(:address)
-    customer = @customer_repository.find(id)
+    customer = @customer_repository.find(index)
     @customer_repository.update(customer, name, address)
     display_customers
   end
 
   def destory
     display_customers
-    id = @customers_view.ask_user_for(:id).to_i
-    @customer_repository.delete(id)
+    index = @customers_view.ask_user_for(:index).to_i
+    @customer_repository.delete(index)
     display_customers
   end
 

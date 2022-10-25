@@ -6,6 +6,8 @@ class CustomersView
   end
 
   def display(customers)
+    puts '----------'
+    puts 'Customers:'
     customers.each_with_index do |customer, index|
       puts "#{index + 1} - #{customer.name} at #{customer.address}"
     end

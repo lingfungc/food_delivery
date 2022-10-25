@@ -20,8 +20,8 @@ customer_repo = CustomerRepository.new(CUSTOMERS_CSV_FILE)
 customers_controller = CustomersController.new(customer_repo)
 employee_repo = EmployeeRepository.new(EMPLOYEES_CSV_FILE)
 sessions_controller = SessionsController.new(employee_repo)
-order_repo = OrderRepository.new(ORDERS_CSV_FILE)
-orders_controller = OrdersController.new(order_repo)
+order_repo = OrderRepository.new(ORDERS_CSV_FILE, meal_repo, customer_repo, employee_repo)
+orders_controller = OrdersController.new(meal_repo, customer_repo, employee_repo, order_repo)
 
 router = Router.new(meals_controller, customers_controller, sessions_controller, orders_controller)
 router.run

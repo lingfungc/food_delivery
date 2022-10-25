@@ -1,8 +1,8 @@
 require_relative '../models/order'
-require_relative "../views/orders_view"
-require_relative "../views/meals_view"
-require_relative "../views/customers_view"
-require_relative "../views/sessions_view"
+require_relative '../views/orders_view'
+require_relative '../views/meals_view'
+require_relative '../views/customers_view'
+require_relative '../views/sessions_view'
 
 class OrdersController
   def initialize(meal_repository, customer_repository, employee_repository, order_repository)
@@ -12,8 +12,8 @@ class OrdersController
     @employee_repository = employee_repository
     @orders_view = OrdersView.new
     @meals_view = MealsView.new
-    @customers_view = CustomerrsView.new
-    @employees_view = EmployeesView.new
+    @customers_view = CustomersView.new
+    @sessions_view = SessionsView.new
   end
 
   def add
@@ -59,7 +59,7 @@ class OrdersController
   def mark_as_delivered(current_user)
     list_my_undelivered_orders(current_user)
     index = @orders_view.ask_user_for(index)
-    my_orders = @order_repository.my_undelivered_orders(current_user)
+    # my_orders = @order_repository.my_undelivered_orders(current_user)
     order = @order_repository.find(index)
     @order_repository.mark_as_delivered(order)
   end
@@ -69,21 +69,21 @@ class OrdersController
   def select_meal
     meals = @meal_repository.all
     @meals_view.display(meals)
-    @orders_view.ask_user_for(index)
+    index = @orders_view.ask_user_for(:index)
     @meal_repository.find(index)
   end
 
   def select_customer
     customers = @customer_repository.all
     @customers_view.display(customers)
-    @orders_view.ask_user_for(index)
+    index = @orders_view.ask_user_for(:index)
     @customer_repository.find(index)
   end
 
   def select_employee
-    employees = @employee_repository.all
+    employees = @employee_repository.all_drivers
     @employees_view.display(employees)
-    @orders_view.ask_user_for(index)
+    index = @orders_view.ask_user_for(:index)
     @employee_repository.find(index)
   end
 

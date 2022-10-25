@@ -20,8 +20,8 @@ class MealRepository
     @meals
   end
 
-  def find(id)
-    @meals.find { |meal| meal.id == id }
+  def find(index)
+    @meals.find { |meal| meal.id == index }
   end
 
   def update(meal, name, price)
@@ -31,8 +31,8 @@ class MealRepository
     load_csv
   end
 
-  def delete(id)
-    @meals.delete_at(id)
+  def delete(index)
+    @meals.delete_at(index - 1)
     save_csv
     load_csv
   end

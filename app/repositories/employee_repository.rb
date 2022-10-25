@@ -8,8 +8,8 @@ class EmployeeRepository
     load_csv if File.exist?(@csv_file)
   end
 
-  def all_riders
-    @employees.select { |employee| employee.role == 'rider' }
+  def all_drivers
+    @employees.select { |employee| employee.role == 'driver' }
   end
 
   def find(id)

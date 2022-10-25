@@ -5,6 +5,14 @@ class SessionsView
     gets.chomp
   end
 
+  def display(employees)
+    puts '----------'
+    puts 'Drivers:'
+    employees.each_with_index do |employee, index|
+      puts "#{index + 1} - #{employee.username}"
+    end
+  end
+
   def signed_in(employee)
     puts "Welcome #{employee.role.capitalize} #{employee.username.capitalize}"
   end
