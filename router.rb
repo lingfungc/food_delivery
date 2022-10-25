@@ -1,12 +1,14 @@
 class Router
-  def initialize(meals_controller, customers_controller)
+  def initialize(meals_controller, customers_controller, sessions_controller)
     @meals_controller = meals_controller
     @customers_controller = customers_controller
+    @sessions_controller = sessions_controller
     @running = true
   end
 
   def run
     while @running
+      @sessions_controller.login
       print_menu
       choice = gets.chomp.to_i
       print `clear`
