@@ -10,6 +10,7 @@ class SessionsView
   end
 
   def wrong_credentials
-    puts 'Wrong credentials. Please try again'
+    puts 'Wrong credentials. Please try again.'
+    puts ''
   end
 end

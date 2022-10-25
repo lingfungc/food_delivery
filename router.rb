@@ -9,25 +9,30 @@ class Router
   def run
     while @running
       @current_user = @sessions_controller.login
+      # Avoid infinite loop of @sessions_controller.login
+      while @current_user && @running
       # check user is a manager or a driver
-      if @current_user.manager?
-
-      else
-
+        if @current_user.manager?
+          manager_menu
+          choice = gets.chomp.to_i
+          print `clear`
+          manager_action(choice)
+        else
+          driver_menu
+          choice = gets.chomp.to_i
+          print `clear`
+          driver_action(choice)
+        end
       end
-      print_menu
-      choice = gets.chomp.to_i
-      print `clear`
-      route_action(choice)
     end
   end
 
   private
 
-  def print_menu
-    puts '--------------------'
-    puts '------- MENU -------'
-    puts '--------------------'
+  def manager_menu
+    puts '----------------------------'
+    puts '------- MANAGER MENU -------'
+    puts '----------------------------'
     puts '1. Add new meal'
     puts '2. List all meals'
     puts '3. Edit a meal'
@@ -36,11 +41,16 @@ class Router
     puts '6. List all customers'
     puts '7. Edit a customer'
     puts '8. Delete a customer'
-    puts '9. Exit'
+    puts '9. Add new order'
+    puts '10. List all orders'
+    puts '11. Edit a order'
+    puts '12. Delete a order'
+    puts '99. Logout'
+    puts '0. Exit'
     print '> '
   end
 
-  def route_action(choice)
+  def manager_action(choice)
     case choice
     when 1 then @meals_controller.add
     when 2 then @meals_controller.list
@@ -50,9 +60,39 @@ class Router
     when 6 then @customers_controller.list
     when 7 then @customers_controller.edit
     when 8 then @customers_controller.destory
-    when 9 then stop!
+    when 9 then @orders_controller.add
+    when 10 then @orders_controller.list_all_undelivered
+    when 11 then @orders_controller.edit
+    when 12 then @orders_controller.destory
+    when 99 then logout!
+    when 0 then stop!
     else puts 'Try again...'
     end
+  end
+
+  def driver_menu
+    puts '---------------------------'
+    puts '------- DRIVER MENU -------'
+    puts '---------------------------'
+    puts '1. Mark one of my orders as delivered'
+    puts '2. List all my orders'
+    puts '99. Logout'
+    puts '0. Exit'
+    print '> '
+  end
+
+  def driver_action(choice)
+    case choice
+    when 1 then @orders_controller.mark_delivered
+    when 2 then @orders_controller.list_undelivered
+    when 99 then logout!
+    when 0 then stop!
+    else puts 'Try again...'
+    end
+  end
+
+  def logout!
+    @current_user = nil
   end
 
   def stop!

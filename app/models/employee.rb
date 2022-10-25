@@ -11,4 +11,8 @@ class Employee
   def manager?
     @role == 'manager'
   end
+
+  def driver?
+    @role == 'driver'
+  end
 end
