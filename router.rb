@@ -8,7 +8,13 @@ class Router
 
   def run
     while @running
-      @sessions_controller.login
+      @current_user = @sessions_controller.login
+      # check user is a manager or a driver
+      if @current_user.manager?
+
+      else
+
+      end
       print_menu
       choice = gets.chomp.to_i
       print `clear`

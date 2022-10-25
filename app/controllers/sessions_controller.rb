@@ -18,6 +18,7 @@ class SessionsController
     if employee && employee.password == password
       # log in and give them a welcome message
       @sessions_view.signed_in(employee)
+      employee
     else
       # wrong credentials and try again
       @sessions_view.wrong_credentials
