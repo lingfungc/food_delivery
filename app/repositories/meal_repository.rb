@@ -43,7 +43,7 @@ class MealRepository
     @meals = []
     CSV.foreach(@csv_file, headers: :first_row, header_converters: :symbol) do |row|
       row[:id] = row[:id].to_i
-      row[:price] = row[:price].to_i
+      row[:price] = row[:price].to_f
       @meals << Meal.new(row)
     end
     @next_id = @meals.empty? ? 1 : @meals.last.id + 1

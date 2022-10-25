@@ -9,7 +9,7 @@ class MealsController
 
   def add
     name = @meals_view.ask_user_for(:name)
-    price = @meals_view.ask_user_for(:price).to_i
+    price = @meals_view.ask_user_for(:price).to_f
     meal = Meal.new(name: name, price: price)
     @meal_repository.create(meal)
     display_meals
@@ -23,7 +23,7 @@ class MealsController
     display_meals
     index = @meals_view.ask_user_for(:id).to_i - 1
     name = @meals_view.ask_user_for(:name)
-    price = @meals_view.ask_user_for(:price).to_i
+    price = @meals_view.ask_user_for(:price).to_f
     meal = @meal_repository.find(index)
     @meal_repository.update(meal, name, price)
     display_meals
