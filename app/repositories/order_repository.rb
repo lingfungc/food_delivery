@@ -28,6 +28,10 @@ class OrderRepository
     save_to_csv
   end
 
+  def my_undelivered_orders(employee)
+    @orders.select { |order| order.employee == employee && !order.delivered? }
+  end
+
   private
 
   def load_csv
