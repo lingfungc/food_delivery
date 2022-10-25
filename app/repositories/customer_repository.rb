@@ -21,7 +21,7 @@ class CustomerRepository
   end
 
   def find(id)
-    @customers.find { |customer| customer.id == id + 1 }
+    @customers.find { |customer| customer.id == id }
   end
 
   def update(customer, name, address)

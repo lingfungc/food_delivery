@@ -19,6 +19,28 @@ class OrderRepository
     save_csv
   end
 
+  def all
+    @orders
+  end
+
+  def find(id)
+    @orders.find { |order| order.id == id }
+  end
+
+  def update(order, meal, customer, employee)
+    order.meal = meal
+    order.customer = customer
+    order.employee = employee
+    save_csv
+    load_csv
+  end
+
+  def delete(id)
+    @orders.delete_at(id)
+    save_csv
+    load_csv
+  end
+
   def undelivered_orders
     @orders.reject { |order| order.delivered? }
   end

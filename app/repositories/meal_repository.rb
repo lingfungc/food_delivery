@@ -21,7 +21,7 @@ class MealRepository
   end
 
   def find(id)
-    @meals.find { |meal| meal.id == id + 1 }
+    @meals.find { |meal| meal.id == id }
   end
 
   def update(meal, name, price)
