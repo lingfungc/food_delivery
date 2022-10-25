@@ -1,8 +1,9 @@
 class Router
-  def initialize(meals_controller, customers_controller, sessions_controller)
+  def initialize(meals_controller, customers_controller, sessions_controller, orders_controller)
     @meals_controller = meals_controller
     @customers_controller = customers_controller
     @sessions_controller = sessions_controller
+    @orders_controller = orders_controller
     @running = true
   end
 
@@ -43,8 +44,9 @@ class Router
     puts '8. Delete a customer'
     puts '9. Add new order'
     puts '10. List all orders'
-    puts '11. Edit a order'
-    puts '12. Delete a order'
+    puts '11. List all undelivered orders'
+    puts '12. Edit a order'
+    puts '13. Delete a order'
     puts '88. Logout'
     puts '0. Exit'
     print '> '
@@ -61,9 +63,10 @@ class Router
     when 7 then @customers_controller.edit
     when 8 then @customers_controller.destory
     when 9 then @orders_controller.add
-    when 10 then @orders_controller.list_all_undelivered
-    when 11 then @orders_controller.edit
-    when 12 then @orders_controller.destory
+    when 10 then @orders_controller.list
+    when 11 then @orders_controller.list_undelivered_orders
+    when 12 then @orders_controller.edit
+    when 13 then @orders_controller.destory
     when 88 then logout!
     when 0 then stop!
     else puts 'Try again...'
@@ -83,8 +86,8 @@ class Router
 
   def driver_action(choice)
     case choice
-    when 1 then @orders_controller.mark_delivered
-    when 2 then @orders_controller.list_undelivered
+    when 1 then @orders_controller.list_my_orders(@current_user)
+    when 2 then @orders_controller.list_my_orders(@current_user)
     when 88 then logout!
     when 0 then stop!
     else puts 'Try again...'

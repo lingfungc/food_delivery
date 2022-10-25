@@ -5,7 +5,7 @@ require_relative "../views/customers_view"
 require_relative "../views/sessions_view"
 
 class OrdersController
-  def initialize(order_repository, meal_repository, customer_repository, employee_repository)
+  def initialize(meal_repository, customer_repository, employee_repository, order_repository)
     @order_repository = order_repository
     @meal_repository = meal_repository
     @customer_repository = customer_repository
@@ -31,19 +31,19 @@ class OrdersController
 
   def edit
     display_orders
-    id = @orders_view.ask_user_for(:id).to_i
+    index = @orders_view.ask_user_for(:index).to_i
     meal = select_meal
     customer = select_customer
     employee = select_employee
-    order = @order_repository.find(id)
+    order = @order_repository.find(index)
     @order_repository.update(order, meal, customer, employee)
     display_orders
   end
 
   def destory
     display_orders
-    id = @orders_view.ask_user_for(:id).to_i
-    @order_repository.delete(id)
+    index = @orders_view.ask_user_for(:index).to_i
+    @order_repository.delete(index)
     display_orders
   end
 
