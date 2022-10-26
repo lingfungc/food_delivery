@@ -90,7 +90,7 @@ class OrdersController
     @sessions_view.display(employees)
     index = @orders_view.ask_user_for(:index).to_i
     # p employees
-    # p employees[index - 1]
+    p employees[index - 1]
     return employees[index - 1]
     # @employee_repository.find(index)
   end

@@ -47,6 +47,8 @@ class Router
     puts '11. List all undelivered orders'
     puts '12. Edit a order'
     puts '13. Delete a order'
+    puts '14. Add a new driver'
+    puts '15. List all drivers'
     puts '88. Logout'
     puts '0. Exit'
     print '> '
@@ -67,6 +69,8 @@ class Router
     when 11 then @orders_controller.list_undelivered_orders
     when 12 then @orders_controller.edit
     when 13 then @orders_controller.destory
+    when 14 then @sessions_controller.add
+    when 15 then @sessions_controller.list_drivers
     when 88 then logout!
     when 0 then stop!
     else puts 'Try again...'

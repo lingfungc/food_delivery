@@ -1,3 +1,4 @@
 id,username,password,role
-1,Justin,123456,manager
-2,Charles,abcde,driver
+1,Justin,$2a$12$nGe7RLrMt2OBy4/cUfR.oun9gWPMwyrTZLzcYSN6zAyXeWrPmJ9bK,manager
+2,Charles,$2a$12$ZRbGYKf/P8MXrC4kwLoppexY7s2QhQCZhR.k46S2hX75tkTRssko.,driver
+3,Jay,$2a$12$McaFuNpAm7vN3nSKWOJ/Ce2.FKo7qWR/RRsOkVnlZWBBoiWHa.u9y,driver
