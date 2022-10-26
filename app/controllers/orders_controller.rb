@@ -36,6 +36,7 @@ class OrdersController
     customer = select_customer
     employee = select_employee
     order = @order_repository.find(index)
+    p order
     @order_repository.update(order, meal, customer, employee)
     display_orders
   end
@@ -70,7 +71,7 @@ class OrdersController
     meals = @meal_repository.all
     @meals_view.display(meals)
     index = @orders_view.ask_user_for(:index).to_i
-    p meals[index - 1]
+    # p meals[index - 1]
     return meals[index - 1]
     # @meal_repository.find(index)
   end
@@ -79,7 +80,7 @@ class OrdersController
     customers = @customer_repository.all
     @customers_view.display(customers)
     index = @orders_view.ask_user_for(:index).to_i
-    p customers[index - 1]
+    # p customers[index - 1]
     return customers[index - 1]
     # @customer_repository.find(index)
   end
@@ -88,8 +89,8 @@ class OrdersController
     employees = @employee_repository.all_drivers
     @sessions_view.display(employees)
     index = @orders_view.ask_user_for(:index).to_i
-    p employees
-    p employees[index - 1]
+    # p employees
+    # p employees[index - 1]
     return employees[index - 1]
     # @employee_repository.find(index)
   end
