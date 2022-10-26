@@ -58,7 +58,7 @@ class OrdersController
 
   def mark_as_delivered(current_user)
     list_my_undelivered_orders(current_user)
-    index = @orders_view.ask_user_for(index)
+    index = @orders_view.ask_user_for(index).to_i
     # my_orders = @order_repository.my_undelivered_orders(current_user)
     order = @order_repository.find(index)
     @order_repository.mark_as_delivered(order)
@@ -69,22 +69,29 @@ class OrdersController
   def select_meal
     meals = @meal_repository.all
     @meals_view.display(meals)
-    index = @orders_view.ask_user_for(:index)
-    @meal_repository.find(index)
+    index = @orders_view.ask_user_for(:index).to_i
+    p meals[index - 1]
+    return meals[index - 1]
+    # @meal_repository.find(index)
   end
 
   def select_customer
     customers = @customer_repository.all
     @customers_view.display(customers)
-    index = @orders_view.ask_user_for(:index)
-    @customer_repository.find(index)
+    index = @orders_view.ask_user_for(:index).to_i
+    p customers[index - 1]
+    return customers[index - 1]
+    # @customer_repository.find(index)
   end
 
   def select_employee
     employees = @employee_repository.all_drivers
-    @employees_view.display(employees)
-    index = @orders_view.ask_user_for(:index)
-    @employee_repository.find(index)
+    @sessions_view.display(employees)
+    index = @orders_view.ask_user_for(:index).to_i
+    p employees
+    p employees[index - 1]
+    return employees[index - 1]
+    # @employee_repository.find(index)
   end
 
   def display_orders

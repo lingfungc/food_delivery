@@ -12,8 +12,8 @@ class EmployeeRepository
     @employees.select { |employee| employee.role == 'driver' }
   end
 
-  def find(id)
-    @employees.find { |employee| employee.id == id }
+  def find(index)
+    @employees.find { |employee| employee.id == index }
   end
 
   def find_by_username(username)
