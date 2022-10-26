@@ -86,7 +86,7 @@ class Router
 
   def driver_action(choice)
     case choice
-    when 1 then @orders_controller.list_my_orders(@current_user)
+    when 1 then @orders_controller.mark_as_delivered(@current_user)
     when 2 then @orders_controller.list_my_orders(@current_user)
     when 88 then logout!
     when 0 then stop!

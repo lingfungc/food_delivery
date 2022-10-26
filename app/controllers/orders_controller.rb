@@ -36,7 +36,7 @@ class OrdersController
     customer = select_customer
     employee = select_employee
     order = @order_repository.find(index)
-    p order
+    # p order
     @order_repository.update(order, meal, customer, employee)
     display_orders
   end
