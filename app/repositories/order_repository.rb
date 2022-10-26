@@ -47,7 +47,7 @@ class OrderRepository
 
   def mark_as_delivered(order)
     order.deliver!
-    save_to_csv
+    save_csv
   end
 
   def my_undelivered_orders(employee)

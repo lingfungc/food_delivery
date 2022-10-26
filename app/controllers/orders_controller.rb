@@ -59,7 +59,7 @@ class OrdersController
 
   def mark_as_delivered(current_user)
     list_my_undelivered_orders(current_user)
-    index = @orders_view.ask_user_for(index).to_i
+    index = @orders_view.ask_user_for(:index).to_i
     # my_orders = @order_repository.my_undelivered_orders(current_user)
     order = @order_repository.find(index)
     @order_repository.mark_as_delivered(order)
