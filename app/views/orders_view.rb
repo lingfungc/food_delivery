@@ -3,7 +3,8 @@ class OrdersView
     puts ''
     puts("What is the #{stuff}?")
     print '> '
-    gets.chomp.capitalize
+    words = gets.chomp.split
+    words.map { |word| word.capitalize }.join(' ')
   end
 
   def display(orders)

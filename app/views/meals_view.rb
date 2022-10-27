@@ -1,9 +1,12 @@
+# Rake Error = Does not have puts '' and puts 'Meals'
+
 class MealsView
   def ask_user_for(stuff)
     puts ''
     puts("What is the #{stuff}?")
     print '> '
-    gets.chomp.capitalize
+    words = gets.chomp.split
+    words.map { |word| word.capitalize }.join(' ')
   end
 
   def display(meals)

@@ -1,6 +1,8 @@
 require 'csv'
 require_relative '../models/meal'
 
+# Rake Error = Price (Interger) vs Price (Float)
+
 class MealRepository
   def initialize(csv_file)
     @csv_file = csv_file
