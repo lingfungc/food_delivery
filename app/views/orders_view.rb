@@ -6,7 +6,6 @@ class OrdersView
   end
 
   def display(orders)
-    puts '----------'
     puts 'Orders:'
     orders.each_with_index do |order, index|
       if order.delivered?
