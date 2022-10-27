@@ -52,8 +52,8 @@ class Router
     puts '14. Add a new driver'
     puts '15. List all drivers'
     puts ''
-    puts '#. Logout'
-    puts '0. Exit'
+    puts '99. Logout'
+    puts '00. Exit'
     puts ''
     print '> '
   end
@@ -75,8 +75,8 @@ class Router
     when 13 then @orders_controller.destory
     when 14 then @sessions_controller.add
     when 15 then @sessions_controller.list_drivers
-    when '#' then logout!
-    when 0 then stop!
+    when 99 then logout!
+    when 00 then stop!
     else puts 'Try again...'
     end
   end
@@ -90,8 +90,8 @@ class Router
     puts '1. Mark one of my orders as delivered'
     puts '2. List all my orders'
     puts ''
-    puts '#. Logout'
-    puts '0. Exit'
+    puts '99. Logout'
+    puts '00. Exit'
     puts ''
     print '> '
   end
@@ -100,8 +100,8 @@ class Router
     case choice
     when 1 then @orders_controller.mark_as_delivered(@current_user)
     when 2 then @orders_controller.list_my_orders(@current_user)
-    when '#' then logout!
-    when 0 then stop!
+    when 99 then logout!
+    when 00 then stop!
     else puts 'Try again...'
     end
   end
