@@ -3,8 +3,7 @@ class SessionsView
     puts ''
     puts "What is your #{stuff}?"
     print '> '
-    words = gets.chomp.split
-    words.map { |word| word.capitalize }.join(' ')
+    gets.chomp
   end
 
   def display(employees)
