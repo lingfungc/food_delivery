@@ -1,3 +1,5 @@
+# Rake Error = Rake does not accept create method in employee repository
+
 require 'csv'
 require_relative '../models/employee'
 

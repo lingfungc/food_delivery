@@ -1,4 +1,4 @@
-# Rake Error = Does not have puts '' and puts 'Meals'
+# Rake Error = Rake does not have puts '' and puts 'Meals'
 
 class MealsView
   def ask_user_for(stuff)

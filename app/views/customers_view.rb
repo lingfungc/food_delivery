@@ -1,3 +1,5 @@
+# Rake Error = Rake does not have puts '' and puts 'Customers'
+
 class CustomersView
   def ask_user_for(stuff)
     puts ''
