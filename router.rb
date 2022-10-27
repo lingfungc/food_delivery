@@ -87,8 +87,8 @@ class Router
     puts '------- DRIVER MENU -------'
     puts '---------------------------'
     puts ''
-    puts '1. Mark one of my orders as delivered'
-    puts '2. List all my orders'
+    puts '1.  List all my orders'
+    puts '2.  Mark one of my orders as delivered'
     puts ''
     puts '99. Logout'
     puts '00. Exit'
@@ -98,8 +98,8 @@ class Router
 
   def driver_action(choice)
     case choice
-    when 1 then @orders_controller.mark_as_delivered(@current_user)
-    when 2 then @orders_controller.list_my_orders(@current_user)
+    when 1 then @orders_controller.list_my_orders(@current_user)
+    when 2 then @orders_controller.mark_as_delivered(@current_user)
     when 99 then logout!
     when 00 then stop!
     else puts 'Try again...'

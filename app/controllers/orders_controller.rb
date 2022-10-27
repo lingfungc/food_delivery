@@ -60,10 +60,10 @@ class OrdersController
   end
 
   def mark_as_delivered(current_user)
-    list_my_undelivered_orders(current_user)
-    index = @orders_view.ask_user_for(:index).to_i
-    my_orders = @order_repo.my_undelivered_orders(current_user)
-    order = my_orders[index]
+    # list_my_undelivered_orders(current_user)
+    # index = @orders_view.ask_user_for(:index).to_i
+    # order = my_orders[index - 1]
+    order = select_order(current_user)
     @order_repository.mark_as_delivered(order)
   end
 
@@ -93,6 +93,13 @@ class OrdersController
     index = @orders_view.ask_user_for(:index).to_i
     return employees[index - 1]
     # @employee_repository.find(index)
+  end
+
+  def select_order(user)
+    orders = @order_repository.my_undelivered_orders(user)
+    @orders_view.display(orders)
+    index = @orders_view.ask_user_for(:index).to_i
+    return orders[index - 1]
   end
 
   def display_orders
