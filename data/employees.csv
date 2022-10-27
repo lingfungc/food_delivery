@@ -2,3 +2,4 @@ id,username,password,role
 1,Justin,$2a$12$nGe7RLrMt2OBy4/cUfR.oun9gWPMwyrTZLzcYSN6zAyXeWrPmJ9bK,manager
 2,Charles,$2a$12$ZRbGYKf/P8MXrC4kwLoppexY7s2QhQCZhR.k46S2hX75tkTRssko.,driver
 3,Jay,$2a$12$McaFuNpAm7vN3nSKWOJ/Ce2.FKo7qWR/RRsOkVnlZWBBoiWHa.u9y,driver
+4,Nick,$2a$12$TWHE3VaBRGDc2eTNGIzGjOXmWZ7VUeiiW9C8G9AJMTwkDZ8jjYaQO,driver

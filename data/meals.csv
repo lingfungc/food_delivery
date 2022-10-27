@@ -1,9 +1,8 @@
 id,name,price
 1,Fries,4.0
-2,Cake,6.0
 3,Lasagne,12.0
-4,Pasta,10.0
 5,Coke,3.0
-6,Magnum,4.0
-7,Sirloin,20.0
+7,Magnum,8.0
 8,Chicken,11.0
+9,Lemon,9.0
+10,Mango,2.0

@@ -10,9 +10,15 @@ class OrdersView
     puts 'Orders:'
     orders.each_with_index do |order, index|
       if order.delivered?
-        puts "#{index + 1} - *DELIVERED* #{order.meal.name} to #{order.customer.name} by #{order.employee.username}"
+        # puts order.meal
+        # puts order.customer
+        # puts order.employee
+        puts "#{index + 1} - *DELIVERED* #{order.meal.name} to by #{order.employee.username}"
       else
-        puts "#{index + 1} - #{order.meal.name} to #{order.customer.name} by #{order.employee.username}"
+        # puts order.meal
+        # puts order.customer
+        # puts order.employee
+        puts "#{index + 1} - #{order.meal.name} to by #{order.employee.username}"
       end
     end
   end

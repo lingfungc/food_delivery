@@ -23,8 +23,8 @@ class OrderRepository
     @orders
   end
 
-  def find(index)
-    @orders.find { |order| order.id == index }
+  def find(id)
+    @orders.find { |order| order.id == id }
   end
 
   def update(order, meal, customer, employee)
@@ -35,8 +35,8 @@ class OrderRepository
     load_csv
   end
 
-  def delete(index)
-    @orders.delete_at(index - 1)
+  def delete(id)
+    @orders.delete_at(id)
     save_csv
     load_csv
   end
@@ -72,8 +72,8 @@ class OrderRepository
   def save_csv
     CSV.open(@csv_file, 'wb') do |csv|
       csv << %w[id delivered meal_id customer_id employee_id]
-      @orders.each_with_index do |order, index|
-        csv << [index + 1, order.delivered, order.meal.id, order.customer.id, order.employee.id]
+      @orders.each do |order|
+        csv << [order.id, order.delivered, order.meal.id, order.customer.id, order.employee.id]
       end
     end
   end

@@ -24,7 +24,8 @@ class CustomersController
     index = @customers_view.ask_user_for(:index).to_i
     name = @customers_view.ask_user_for(:name)
     address = @customers_view.ask_user_for(:address)
-    customer = @customer_repository.find(index)
+    customers = @customer_repository.all
+    customer = customers[index - 1]
     @customer_repository.update(customer, name, address)
     display_customers
   end
@@ -32,7 +33,7 @@ class CustomersController
   def destory
     display_customers
     index = @customers_view.ask_user_for(:index).to_i
-    @customer_repository.delete(index)
+    @customer_repository.delete(index - 1)
     display_customers
   end
 

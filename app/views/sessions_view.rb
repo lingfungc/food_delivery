@@ -14,7 +14,9 @@ class SessionsView
   end
 
   def signed_in(employee)
+    print `clear`
     puts "Welcome #{employee.role.capitalize} #{employee.username.capitalize}"
+    puts ''
   end
 
   def wrong_credentials

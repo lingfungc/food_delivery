@@ -24,7 +24,8 @@ class MealsController
     index = @meals_view.ask_user_for(:index).to_i
     name = @meals_view.ask_user_for(:name)
     price = @meals_view.ask_user_for(:price).to_f
-    meal = @meal_repository.find(index)
+    meals = @meal_repository.all
+    meal = meals[index - 1]
     @meal_repository.update(meal, name, price)
     display_meals
   end
@@ -32,7 +33,7 @@ class MealsController
   def destory
     display_meals
     index = @meals_view.ask_user_for(:index).to_i
-    @meal_repository.delete(index)
+    @meal_repository.delete(index - 1)
     display_meals
   end
 

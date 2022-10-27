@@ -20,8 +20,8 @@ class MealRepository
     @meals
   end
 
-  def find(index)
-    @meals.find { |meal| meal.id == index }
+  def find(id)
+    @meals.find { |meal| meal.id == id }
   end
 
   def update(meal, name, price)
@@ -31,8 +31,8 @@ class MealRepository
     load_csv
   end
 
-  def delete(index)
-    @meals.delete_at(index - 1)
+  def delete(id)
+    @meals.delete_at(id)
     save_csv
     load_csv
   end
@@ -52,8 +52,8 @@ class MealRepository
   def save_csv
     CSV.open(@csv_file, 'wb') do |csv|
       csv << %w[id name price]
-      @meals.each_with_index do |meal, index|
-        csv << [index + 1, meal.name, meal.price]
+      @meals.each do |meal|
+        csv << [meal.id, meal.name, meal.price]
       end
     end
   end

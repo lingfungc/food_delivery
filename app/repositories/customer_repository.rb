@@ -20,8 +20,8 @@ class CustomerRepository
     @customers
   end
 
-  def find(index)
-    @customers.find { |customer| customer.id == index }
+  def find(id)
+    @customers.find { |customer| customer.id == id }
   end
 
   def update(customer, name, address)
@@ -31,8 +31,8 @@ class CustomerRepository
     load_csv
   end
 
-  def delete(index)
-    @customers.delete_at(index - 1)
+  def delete(id)
+    @customers.delete_at(id)
     save_csv
     load_csv
   end
@@ -51,8 +51,8 @@ class CustomerRepository
   def save_csv
     CSV.open(@csv_file, 'wb') do |csv|
       csv << %w[id name address]
-      @customers.each_with_index do |customer, index|
-        csv << [index + 1, customer.name, customer.address]
+      @customers.each do |customer|
+        csv << [customer.id, customer.name, customer.address]
       end
     end
   end
