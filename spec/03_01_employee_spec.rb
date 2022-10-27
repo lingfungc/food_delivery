@@ -1,3 +1,5 @@
+# Changed employee role from 'Rider' to 'Driver'
+
 begin
   require_relative "../app/models/employee"
 rescue LoadError => e
@@ -50,8 +52,8 @@ describe "Employee", :employee do
 
   describe "#role" do
     it "should return the role of the Employee" do
-      employee = Employee.new({ role: "rider" })
-      expect(employee.role).to eq("rider")
+      employee = Employee.new({ role: "driver" })
+      expect(employee.role).to eq("driver")
     end
   end
 
@@ -62,20 +64,20 @@ describe "Employee", :employee do
     end
 
     it "should return false if the employee is a delivery guy" do
-      employee = Employee.new({ role: "rider" })
+      employee = Employee.new({ role: "driver" })
       expect(employee.manager?).to be false
     end
   end
 
-  describe "#rider?" do
+  describe "#driver?" do
     it "should return true if the employee is a delivery guy" do
-      employee = Employee.new({ role: "rider" })
-      expect(employee.rider?).to be true
+      employee = Employee.new({ role: "driver" })
+      expect(employee.driver?).to be true
     end
 
     it "should return false if the employee is a manager" do
       employee = Employee.new({ role: "manager" })
-      expect(employee.rider?).to be false
+      expect(employee.driver?).to be false
     end
   end
 end

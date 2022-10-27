@@ -1,3 +1,5 @@
+# Changed employee role from 'Rider' to 'Driver'
+
 require "fileutils"
 require_relative "support/csv_helper"
 
@@ -20,8 +22,8 @@ describe "EmployeeRepository", :employee do
     [
       [ "id", "username", "password", "role" ],
       [ 1, "paul", "secret", "manager" ],
-      [ 2, "john", "secret", "rider" ],
-      [ 3, "ringo", "secret", "rider"]
+      [ 2, "john", "secret", "driver" ],
+      [ 3, "ringo", "secret", "driver"]
     ]
   end
   let(:csv_path) { "spec/support/employees.csv" }
@@ -74,12 +76,12 @@ describe "EmployeeRepository", :employee do
     expect(repo).not_to respond_to(:create)
   end
 
-  describe "#all_riders" do
-    it "should return all the riders stored by the repo" do
+  describe "#all_drivers" do
+    it "should return all the drivers stored by the repo" do
       repo = EmployeeRepository.new(csv_path)
-      expect(repo.all_riders).to be_a(Array)
-      expect(repo.all_riders.size).to eq(2)
-      expect(repo.all_riders[0].username).to eq("john")
+      expect(repo.all_drivers).to be_a(Array)
+      expect(repo.all_drivers.size).to eq(2)
+      expect(repo.all_drivers[0].username).to eq("john")
     end
 
     it "EmployeeRepository should not expose the @employees through a reader/method" do
